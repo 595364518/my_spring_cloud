@@ -1,0 +1,23 @@
+server:
+  port: 8001
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 920722lhb
+    url: jdbc:mysql://localhost:3306/mycloud?useUnicode=true&characterEncoding=utf8
+  application:
+    name: user-service
+  jpa:
+    database: MySQL
+    show-sql: true
+    open-in-view: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+  instance:
+    prefer-ip-address: true #使用ip注册
+    instance-id: ${spring.cloud.client.ip-address}:${server.port} #服务唯一标识
+    lease-expiration-duration-in-seconds: 5 #心跳间隔
+    lease-renewal-interval-in-seconds: 10 #续约到期时间

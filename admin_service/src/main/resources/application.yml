@@ -1,0 +1,14 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: admin-service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+  instance:
+    prefer-ip-address: true #使用ip注册
+    instance-id: ${spring.cloud.client.ip-address}:${server.port} #服务唯一标识
+    lease-expiration-duration-in-seconds: 5 #心跳间隔
+    lease-renewal-interval-in-seconds: 10 #续约到期时间
